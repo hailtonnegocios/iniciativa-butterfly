@@ -1,0 +1,5 @@
+br\com\iniciativabutterfly\model\dao\impl\TesteVraptorDao.class
+br\com\iniciativabutterfly\controller\TesteVraptorController.class
+br\com\iniciativabutterfly\connectionfactory\ConnectionEntityManager.class
+br\com\iniciativabutterfly\model\entity\TesteVraptor.class
+br\com\iniciativabutterfly\model\dao\inter\InterfaceIniciativaButterFly.class

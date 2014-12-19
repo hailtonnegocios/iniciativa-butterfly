@@ -24,7 +24,7 @@ public class TesteVraptorController{
 	
 	@Path("/adiciona")
 	public void adiciona() {
-		tv.setNomeFramework("Vraptor");
+//		tv.setNomeFramework("Vraptor");
 		tv.setDescricaoFramework(" Tecnologias ( CDI + JBOSS Wildfly 8.0 + JPA(Hibernate) + Postgres + Eclipse Mars");
 		tv.setVersion("version 4.x");
 

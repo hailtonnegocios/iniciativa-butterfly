@@ -1,7 +1,10 @@
 package br.com.iniciativabutterfly.model.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,7 +15,9 @@ import lombok.ToString;
 @EqualsAndHashCode @ToString
 public class TesteVraptor {
 	
-	@Id
+	@Id  
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "teste_id_seq")
+	@SequenceGenerator(name = "teste_id_seq", sequenceName = "teste_id_seq")
 	@Getter	@Setter
 	private String nomeFramework;
 	

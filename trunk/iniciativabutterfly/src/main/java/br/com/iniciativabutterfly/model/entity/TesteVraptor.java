@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,8 +15,7 @@ import lombok.ToString;
 public class TesteVraptor {
 	
 	@Id  
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "teste_id_seq")
-	@SequenceGenerator(name = "teste_id_seq", sequenceName = "teste_id_seq")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter	@Setter
 	private String nomeFramework;
 	

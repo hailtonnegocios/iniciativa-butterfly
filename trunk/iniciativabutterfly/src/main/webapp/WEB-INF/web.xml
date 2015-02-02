@@ -11,4 +11,22 @@
 <!--     <welcome-file>default.jsp</welcome-file> -->
 <!--   </welcome-file-list> -->
    
+		<context-param>  
+            <param-name>  
+                org.apache.tiles.definition.DefinitionsFactory.DEFINITIONS_CONFIG  
+            </param-name>  
+            <param-value>  
+                /WEB-INF/tiles.xml  
+            </param-value>  
+        </context-param>  
+        <servlet>  
+            <servlet-name>TilesServlet</servlet-name>  
+            <servlet-class>org.apache.tiles.web.startup.TilesServlet</servlet-class>  
+            <init-param>  
+                <param-name>org.apache.tiles.factory.TilesContainerFactory.MUTABLE</param-name>  
+                <param-value>true</param-value>  
+            </init-param>  
+            <load-on-startup>2</load-on-startup>  
+        </servlet>     
+   
 </web-app>

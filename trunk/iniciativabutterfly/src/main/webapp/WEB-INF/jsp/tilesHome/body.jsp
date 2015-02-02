@@ -245,9 +245,9 @@
 				<div class="grid_1_of_4 images_1_of_5">
 					<a class="popup-with-zoom-anim" href="#small-dialog7"> <span
 						class="rollover"> </span>
-					</a> <img src="<c:url value="/resources/images/Fabio.jpg"/>" style="width: 100px; height: 100px;">
-					<h3>Fábio Sakiyama</h3>
-					<h4>Coordenador de Tecnologia</h4>
+					</a> <img src="<c:url value="/resources/images/joviane.jpg"/>" style="width: 100px; height: 100px;">
+					<h3>Joviane Jardim</h3>
+					<h4>Arquiteta de Software</h4>
 					<p>Gosta de conhecer as coisas a fundo.</p>
 
 				</div>

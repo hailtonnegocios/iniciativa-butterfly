@@ -13,7 +13,7 @@ public class ConnectionEntityManager {
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("IniciativaButterfly");
 
 	@Produces @RequestScoped
-	public EntityManager getEntityManager() {
+	public static EntityManager getEntityManager() {
 		return emf.createEntityManager();
 	}
 	

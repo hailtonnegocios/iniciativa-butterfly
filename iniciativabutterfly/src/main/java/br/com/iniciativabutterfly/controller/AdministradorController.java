@@ -1,7 +1,6 @@
 package br.com.iniciativabutterfly.controller;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
@@ -14,43 +13,67 @@ import br.com.iniciativabutterfly.util.GeraSenha;
 @Controller
 public class AdministradorController {
 
-	private final Validator validation;
-	private final Result result;
-	private final EntityManager em;
-	private final AdministradorDao dao;
-	
 	@Inject
-	public AdministradorController(Result result, EntityManager em, AdministradorDao dao, Validator validator) {
-		this.result = result;
-		this.em = em;
-		this.dao = dao;
-		this.validation = validator;
-	}
-	
-	public AdministradorController() {
-		this(null, null, null, null);
-	}
-	
+	private Validator validator;
+	@Inject
+	private Result result;
+	@Inject
+	private AdministradorDao dao;
+
+//	@Inject
+//	public AdministradorController(Result result,
+//			AdministradorDao dao, Validator validator) {
+//		this.result = result;
+//		this.dao = dao;
+//		this.validator = validator;
+//	}
+//
+//	public AdministradorController() {
+//		this(null, null, null);
+//	}
+
 	public void cadastro() {
 	}
-	
-//Estou dizendo que este metodo só recebe Post
-//	@Post
+
+	// Estou dizendo que este metodo só recebe Post
+	// @Post
 	public void adiciona(@Valid AdministradorModel administradorModel) {
-		validation.onErrorForwardTo(this).cadastro();{
-		final String geraSenha = new GeraSenha().geraSenhaAlfanumerica();
-		administradorModel.setSenha(geraSenha);
-		dao.adiciona(administradorModel);
-		result.include("novaSenha", geraSenha);
-		result.include("novoAdministrador", administradorModel);
-		}}
-	
+
+//		validator.check(administradorModel.getNome().isEmpty(), new SimpleMessage(
+//				"administradorModel.nome", "Nome não pode estar vazio"));
+//
+//		validator.onErrorForwardTo(this).cadastro();
+			final String geraSenha = new GeraSenha().geraSenhaAlfanumerica();
+			administradorModel.setSenha(geraSenha);
+			dao.adiciona(administradorModel);
+			String mensagem = "Novo administrador "
+					+ administradorModel.getNome() + " cadastrado com sucesso! "
+					+ " sua nova senha é " + geraSenha;
+			result.include("mensagem", mensagem);
+			result.redirectTo(this).lista();
+		
+	}
+
 	public void lista() {
 		result.include("listaAdministradores", dao.lista());
 	}
 	
-	public void buscaPorId(AdministradorModel administradorModel) {
-		result.include("resultado", dao.buscaPorID(administradorModel));
+	public void editar(Long id) {
+		result.include("administradorAlteracao", dao.buscaPorID(id));
+	}
+	
+	public void atualiza(AdministradorModel administradorModel) {
+		dao.altera(administradorModel);
+		result.redirectTo(this).lista();
+	}
+	
+	public void excluir(Long id) {
+		dao.remove(id);
+		result.redirectTo(this).lista();
+	}
+
+	public void buscaPorId(Long id) {
+		result.include("resultado", dao.buscaPorID(id));
 	}
 
 }

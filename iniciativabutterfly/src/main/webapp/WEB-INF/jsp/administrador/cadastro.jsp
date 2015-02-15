@@ -22,7 +22,12 @@
 	<hr>
 	<br>
 
-	<center>Todos os campos são obrigatórios</center>	
+	<center>Todos os campos são obrigatórios</center>
+	
+	<c:forEach items="${errors}" var="errosDeValidacao"> 
+		${errosDeValidacao.category} - ${errosDeValidacao.message}<br>
+	
+	</c:forEach>	
 
 		<br>
 	<table width="1040" height="247" border="0">

@@ -28,6 +28,12 @@
 	<table width="1040" height="247" border="0">
 		<form action="<c:url value='/administrador/atualiza'/>" method="POST">
 			<tr>
+				<td width="165"><label for="nome">Código do Administrador</label></td>
+				<td width="355"><input type="text" readonly="readonly"
+					name="administradorModel.id" id="administradorModel.id" value="${administradorAlteracao.id}" />
+					</td>
+			</tr>
+			<tr>
 				<td width="165"><label for="nome">Nome Completo</label></td>
 				<td width="355"><input type="text"
 					name="administradorModel.nome" id="administradorModel.nome" value="${administradorAlteracao.nome}" />

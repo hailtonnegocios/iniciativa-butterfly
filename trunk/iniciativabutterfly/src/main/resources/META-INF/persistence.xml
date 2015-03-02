@@ -3,6 +3,7 @@
 	<persistence-unit name="IniciativaButterfly" transaction-type="RESOURCE_LOCAL">
     <jta-data-source>java:jboss/datasources/IniciativaButterflyDS</jta-data-source>
     <class>br.com.iniciativabutterfly.model.entity.TesteVraptor</class>
+    <class>br.com.iniciativabutterfly.model.entity.AdministradorModel</class>
     <properties>
 <!--       <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/> -->
 <!--       <property name="hibernate.hbm2ddl.auto" value="update"/> -->

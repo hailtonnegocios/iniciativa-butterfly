@@ -13,42 +13,40 @@ import br.com.iniciativabutterfly.util.GeraSenha;
 @Controller
 public class AdministradorController {
 
-	@Inject
-	private Validator validator;
+	private final Validator validator;
+
 	@Inject
 	private Result result;
 	@Inject
 	private AdministradorDao dao;
-
-//	@Inject
-//	public AdministradorController(Result result,
-//			AdministradorDao dao, Validator validator) {
-//		this.result = result;
-//		this.dao = dao;
-//		this.validator = validator;
-//	}
-//
-//	public AdministradorController() {
-//		this(null, null, null);
-//	}
-
+	
+    protected AdministradorController() {
+        this(null);
+    }
+	
+	@Inject
+	public AdministradorController(Validator validator) {
+		this.validator = validator;
+	}
+	
 	public void cadastro() {
 	}
-
-	// Estou dizendo que este metodo só recebe Post
-	// @Post
+	
 	public void adiciona(@Valid AdministradorModel administradorModel) {
+		
+			validator.onErrorRedirectTo(this).cadastro();
+//			validator.onErrorUsePageOf(this).cadastro();
 
-//		validator.check(administradorModel.getNome().isEmpty(), new SimpleMessage(
-//				"administradorModel.nome", "Nome não pode estar vazio"));
-//
-//		validator.onErrorForwardTo(this).cadastro();
+		
 			final String geraSenha = new GeraSenha().geraSenhaAlfanumerica();
 			administradorModel.setSenha(geraSenha);
 			dao.adiciona(administradorModel);
 			String mensagem = "Novo administrador "
 					+ administradorModel.getNome() + " cadastrado com sucesso! "
 					+ " sua nova senha é " + geraSenha;
+			
+			
+			
 			result.include("mensagem", mensagem);
 			result.redirectTo(this).lista();
 		

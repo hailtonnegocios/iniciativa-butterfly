@@ -25,8 +25,7 @@
 	<center>Todos os campos são obrigatórios</center>
 	
 	<c:forEach items="${errors}" var="errosDeValidacao"> 
-		${errosDeValidacao.category} - ${errosDeValidacao.message}<br>
-	
+		<span style="color: red">${errosDeValidacao.message}</span><br>
 	</c:forEach>	
 
 		<br>
@@ -34,29 +33,29 @@
 		<form action="<c:url value='/administrador/adiciona'/>" method="POST" >
 		<tr>
 			<td width="165"><label for="nome">Nome Completo</label></td>
-			<td width="355"><input type="text" name="administradorModel.nome" id="administradorModel.nome" /></td>
+			<td width="355"><input type="text" name="administradorModel.nome" id="administradorModel.nome" value="${administradorModel.nome}" /></td>
 		</tr>
 		<tr>
 			<td><label for="email">Email </label></td>
-			<td width="257"><input type="text" name="administradorModel.email" /></td>
+			<td width="257"><input type="text" name="administradorModel.email" value="${administradorModel.email}" /></td>
 		</tr>
 		<tr>
 			<td><label for="trello">Trello </label></td>
-			<td><input type="text" name="administradorModel.trello" id="administradorModel.trello" /></td>
+			<td><input type="text" name="administradorModel.trello" id="administradorModel.trello" value="${administradorModel.trello}" /></td>
 
 			<td><label for="skype">Skype </label></td>
-			<td><input type="text" name="administradorModel.skype" id="administradorModel.skype"/></td>
+			<td><input type="text" name="administradorModel.skype" id="administradorModel.skype" value="${administradorModel.skype}"/></td>
 		</tr>
 		<tr>
 			<td><label for="github">GitHub </label></td>
-			<td><input type="text" name="administradorModel.github" id="administradorModel.github" /></td>
+			<td><input type="text" name="administradorModel.github" id="administradorModel.github" value="${administradorModel.github}" /></td>
 
 			<td><label for="disponibilidade">Disponibilidade </label></td>
-			<td><input type="text" name="administradorModel.disponibilidade" id="administradorModel.disponibilidade" /></td>
+			<td><input type="text" name="administradorModel.disponibilidade" id="administradorModel.disponibilidade" value="${administradorModel.disponibilidade}" /></td>
 		</tr>
 		<tr>
 			<td><label for="objetivo">Objetivo </label></td>
-			<td><textarea name="administradorModel.objetivo" cols="50" rows="5" id="administradorModel.objetivo"></textarea></td>
+			<td><textarea name="administradorModel.objetivo" cols="50" rows="5" id="administradorModel.objetivo" >${administradorModel.objetivo}</textarea></td>
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 		</tr>

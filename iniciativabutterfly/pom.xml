@@ -8,19 +8,27 @@
 	<name>iniciativabutterfly</name>
 	<description>Projeto Iniciativa Butterfly</description>
 
-	<!-- <properties> -->
-	<!-- <hibernate.group>org.hibernate</hibernate.group> -->
-	<!-- <hibernate.version>4.2.6.Final</hibernate.version> -->
-	<!-- <slf4j.version>1.7.5</slf4j.version> -->
-	<!-- <spring.version>4.0.0.RELEASE</spring.version> -->
-	<!-- </properties> -->
-
-
 	<properties>
+		<hibernate.group>org.hibernate</hibernate.group>
+		<hibernate.version>4.3.5.final</hibernate.version>
+		<slf4j.version>1.7.5</slf4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>${hibernate.group}</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>${hibernate.group}</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>

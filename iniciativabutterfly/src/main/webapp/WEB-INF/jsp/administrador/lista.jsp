@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Lista de Administradores</title>
+<script src="<c:url value="/resources/js/jquery.min.js"/>"></script>
 </head>
 <body>
 
@@ -21,8 +21,8 @@
 	<br>
 	<br>
 	<form action="#" onclick="">
-		Nome <input type="text" name="buscaNome" /> <input type="button"
-			name="buscarNome" value="buscar" />
+		Nome <input type="text" name="buscaNomeId" id="buscaNomeId" /> <input type="button"
+			name="buscarNome" id="buscarNome" value="buscar" />
 	</form>
 	<br>
 	<br>
@@ -65,6 +65,20 @@
 			 } 
 	}
 
+    $('#buscarNome').click(function(){
+    	$.post("retornaAdministrador",{id:$("#buscaNomeId").val()},
+           function(data) {
+	    		alert("NOME:   "+data.nome+"\n"+
+	    			  "TRELLO:   "+data.trello+"\n"+
+	    			  "GITHUB:   "+data.github+"\n"+
+	    			  "OBJETIVO:   "+data.objetivo+"\n"+
+	    			  "EMAIL:   "+data.email+"\n"+
+	    			  "SKYPE:   "+data.skype+"\n"+
+	    			  "DISPONIBILIDADE:   "+data.disponibilidade
+	    			  );
+           });
+    });
+	
 </script>
 
 </html>

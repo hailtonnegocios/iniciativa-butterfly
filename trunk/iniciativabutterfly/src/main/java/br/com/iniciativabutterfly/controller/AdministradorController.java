@@ -1,9 +1,13 @@
 package br.com.iniciativabutterfly.controller;
 
+import static br.com.caelum.vraptor.view.Results.json;
+
 import javax.inject.Inject;
 import javax.validation.Valid;
 
 import br.com.caelum.vraptor.Controller;
+import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.iniciativabutterfly.model.dao.impl.AdministradorDao;
@@ -13,21 +17,20 @@ import br.com.iniciativabutterfly.util.GeraSenha;
 @Controller
 public class AdministradorController {
 
-	private final Validator validator;
+	@Inject
+	public AdministradorController(Validator validator) {
+		this.validator = validator;
+	}
 
-	@Inject
-	private Result result;
-	@Inject
-	private AdministradorDao dao;
-	
     protected AdministradorController() {
         this(null);
     }
 	
 	@Inject
-	public AdministradorController(Validator validator) {
-		this.validator = validator;
-	}
+	private Result result;
+	@Inject
+	private AdministradorDao dao;
+	private final Validator validator;
 	
 	public void cadastro() {
 	}
@@ -36,7 +39,6 @@ public class AdministradorController {
 		
 			validator.onErrorRedirectTo(this).cadastro();
 //			validator.onErrorUsePageOf(this).cadastro();
-
 		
 			final String geraSenha = new GeraSenha().geraSenhaAlfanumerica();
 			administradorModel.setSenha(geraSenha);
@@ -45,11 +47,8 @@ public class AdministradorController {
 					+ administradorModel.getNome() + " cadastrado com sucesso! "
 					+ " sua nova senha é " + geraSenha;
 			
-			
-			
 			result.include("mensagem", mensagem);
 			result.redirectTo(this).lista();
-		
 	}
 
 	public void lista() {
@@ -73,5 +72,11 @@ public class AdministradorController {
 	public void buscaPorId(Long id) {
 		result.include("resultado", dao.buscaPorID(id));
 	}
-
+	
+	@Post 
+	@Path("/administrador/retornaAdministrador")	
+	public void retornaAdministrador(Long id) {
+		result.use(json()).indented().withoutRoot().from(dao.buscaPorID(id)).serialize();
+	}
+	
 }
